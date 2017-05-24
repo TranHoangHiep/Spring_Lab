@@ -1,11 +1,8 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:security="http://www.springframework.org/schema/security"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans 
 						http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
-						http://www.springframework.org/schema/context 
-						http://www.springframework.org/schema/context/spring-context-4.2.xsd
 						http://www.springframework.org/schema/mvc
  						http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd
  						http://www.springframework.org/schema/security
@@ -58,7 +55,7 @@
 	
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="org.apache.derby.jdbc.EmbeddedDriver"/>
-		<property name="url" value="jdbc:derby:/Users/hoanghiep/Downloads/Studying/Java/Spring/Code/spring-security-lab/userdb1;create=true"/>
+		<property name="url" value="jdbc:derby:/Users/hoanghiep/Downloads/Studying/Java/Spring/Code/Spring_Lab/spring-security-lab/db/userdb1;create=true"/>
 		<property name="username" value=""/>
 		<property name="password" value=""/>
 	</bean>
