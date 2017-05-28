@@ -1,6 +1,7 @@
 package edu.hanoi.jazz.dao.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by hoanghiep on 5/28/17.

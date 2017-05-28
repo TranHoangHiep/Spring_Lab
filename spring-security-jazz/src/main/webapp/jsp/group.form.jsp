@@ -18,6 +18,7 @@
                 <form:input type="text" name="name" placeholder="Group name" path="name"/>
             </p>
             <p class="submit">
+                <form:input path="id" name="id" type="hidden"/>
                 <input type="submit" name="add" value="Add">
             </p>
         </form:form>
