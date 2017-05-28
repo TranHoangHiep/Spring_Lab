@@ -3,6 +3,7 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:mvc="http://www.springframework.org/schema/mvc"
        xmlns:security="http://www.springframework.org/schema/security"
+       xmlns:jdbc="http://www.springframework.org/schema/jdbc"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
                     http://springframework.org/schema/beans/spring-beans-4.2.xsd
                     http://www.springframework.org/schema/context
@@ -10,7 +11,9 @@
                     http://www.springframework.org/schema/mvc
                     http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd
                     http://www.springframework.org/schema/security
-                    http://www.springframework.org/schema/security/spring-security-4.2.xsd">
+                    http://www.springframework.org/schema/security/spring-security-4.2.xsd
+                    http://www.springframework.org/schema/jdbc
+                    http://www.springframework.org/schema/jdbc/spring-jdbc-4.2.xsd">
 
 
     <mvc:annotation-driven/>
@@ -22,8 +25,9 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 
+    <!--config tiles-->
     <bean id="tilesViewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
-        <property name="order" value="3" />
+        <property name="order" value="3"/>
         <property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView"/>
     </bean>
 
@@ -34,6 +38,8 @@
             </list>
         </property>
     </bean>
+
+    <!--config spring security-->
     <security:http auto-config="true">
         <!--<security:intercept-url pattern="/nguoi-dung**" access="ROLE_USER"/>-->
         <security:intercept-url pattern="/dang-nhap" access="permitAll"/>
@@ -54,5 +60,27 @@
         </security:authentication-provider>
     </security:authentication-manager>
     <security:global-method-security pre-post-annotations="enabled"/>
+
+    <!--config dataSource-->
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="org.apache.derby.jdbc.EmbeddedDriver"/>
+        <property name="url"
+                  value="jdbc:derby:/Users/hoanghiep/Downloads/Studying/Java/Spring/Code/Spring_Lab/spring-security-jazz/db/userdb1;create=true"/>
+        <property name="username" value=""/>
+        <property name="password" value=""/>
+    </bean>
+
+    <bean id="startEventHandler" class="edu.hanoi.jazz.ContextStartEventHandler"></bean>
+
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.DerbyTenSevenDialect</prop>
+                <prop key="hibernate.show_sql">true</prop>
+            </props>
+        </property>
+        <property name="packagesToScan" value="edu.hanoi.jazz.dao.model"/>
+    </bean>
 
 </beans>
