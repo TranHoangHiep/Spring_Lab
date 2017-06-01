@@ -2,7 +2,6 @@ package edu.hanoi.jazz.dao.impl;
 
 import edu.hanoi.jazz.dao.model.Group;
 import edu.hanoi.jazz.dao.model.GroupDAO;
-import org.apache.derby.vti.Restriction;
 import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;

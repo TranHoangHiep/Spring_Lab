@@ -26,6 +26,9 @@ public class ContextStartEventHandler implements ApplicationListener<ContextStar
         try {
             createTable("HN_GROUP", "create table HN_GROUP(id bigint primary key generated always as identity " +
                     "(start with 1, increment by 1), name varchar(100))");
+            createTable("HN_USER", "create table HN_USER(username VARCHAR(100) primary key, password varchar(100)," +
+                    " email varchar(100), age Integer, groupId bigint, CONSTRANT GROUP _FK FOREIGN KEY (groupId)" +
+                    " REFERENCES HN_GROUP(id))");
         } catch (Exception e) {
             LOGGER.info("error: " + e);
         }
